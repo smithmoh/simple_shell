@@ -1,1 +1,1 @@
-A collaborative simple_shell project
+A collaborative simple shell collaborative project: smithmoh and alex
