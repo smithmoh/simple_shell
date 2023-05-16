@@ -46,7 +46,7 @@ void exit_shell(int status)
 *@args: double pointer
 *Return: 1 if successful and -1 if error
 */
-int execute(chaar **args)
+int execute(char **args)
 {
 	/* checks for built-in-command */
 	if (strcmp(args[0], "exit") == 0)
