@@ -11,6 +11,7 @@
 #include <limits.h>
 #include <fcntl.h>
 #include <errno.h>
+#include <stdbool.h>
 
 /* for read/write buffers */
 #define READ_BUF_SIZE 1024
@@ -231,5 +232,10 @@ void check_chain(info_t *, char *, size_t *, size_t, size_t);
 int replace_alias(info_t *);
 int replace_vars(info_t *);
 int replace_string(char **, char *);
+
+/* toem_arguments.c */
+void prompt();
+char *read_line();
+char **split_line(char *line);
 
 #endif

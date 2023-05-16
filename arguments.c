@@ -1,4 +1,5 @@
 #include "shell.h"
+#include <stdio.h>
 /**
 *signal_handler - sets up a signal handler to handle sig
 *@sig: the signal that is being handled
@@ -7,12 +8,14 @@
 void signal_handler(int sig)
 {
 	if (sig == SIGINT)
-		write(STDOUT_FILENO, "\n$", 3);
+		write(STDOUT_FILENO, "\n$ ", 3);
 }
 /**
 *main - Entry point
 *Return: EXIT_SUCCESS on success EXIT_FAILURE on failure
 */
+int execute(char **args);
+
 int main(void)
 {
 	char *line;
@@ -22,12 +25,12 @@ int main(void)
 	signal(SIGINT, signal_handler); /* handles the ctrl + c signal */
 
 	do {
-		prompt();
-		line = read_line();
-		args = split_line(line);
-		status = execute(args);
-		free(line);
-		free(args);
+		prompt(); /* display the prompt */
+		line = read_line(); /* read input from the user */
+		args = split_line(line); /* split input into arguments */
+		status = execute(args); /* execute the command */
+		free(line); /* free memory allocated for input */
+		free(args); /* free memory allocated for arguments */
 	} while (status);
 
 	return (EXIT_SUCCESS);
@@ -46,7 +49,7 @@ void exit_shell(int status)
 *@args: double pointer
 *Return: 1 if successful and -1 if error
 */
-int execute(chaar **args)
+int execute(char **args)
 {
 	/* checks for built-in-command */
 	if (strcmp(args[0], "exit") == 0)
@@ -84,7 +87,7 @@ int execute(chaar **args)
 				/* parent process */
 				do {
 					waitpid(pid, &status, WUNTRACED);
-				} while (!WIFEXITED(status) && WIFSIGNALED(status));
+				} while (!WIFEXITED(status) && !WIFSIGNALED(status));
 	}
 	return (1);
 }
