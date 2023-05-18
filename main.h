@@ -15,14 +15,10 @@
 
 typedef struct node 
 {
-	char *str;
+	char *dir;
 	struct node *next;
 }Node;
 
-#define BUFFER_SIZE 1024
-
-ssize_t read_line(char *buffer, size_t size);
-int execute_command(const char *command);
 
 
 
