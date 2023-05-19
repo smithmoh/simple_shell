@@ -45,6 +45,7 @@ int customStrncmp(char *s1, char *s2, int n)
 		s1++;
 		n--;
 	}
+	return (0);
 }
 /**
 *customStrcpy - it copies src to dest
