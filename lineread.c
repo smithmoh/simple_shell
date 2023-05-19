@@ -30,7 +30,7 @@ char *readLine(void)
 		exit(1);
 	}
 	id = read - 1;
-	if (new_command[id] = '\n')
+	if (new_command[id] == '\n')
 	{
 		new_command[id] = '\0';
 	}
