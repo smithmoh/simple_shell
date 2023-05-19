@@ -18,45 +18,45 @@ int main(__attribute__((unused))int argc, char **argv)
 	{
 		if (isatty(STDIN_FILENO))
 		{
-			print_prompt();
+			displayPrompt();
 			fflush(stdout);
-			new_command = read_line();
+			new_command = readLine();
 			if (feof(stdin))
 			{
 				write(STDOUT_FILENO, "\n", 1);
 				break;
 			}
-			new_commands = handle_seperators(new_command);
+			new_commands = handleSeperators(new_command);
 			for (i = 0; new_commands[i] != NULL; i++)
 			{
-				argv = parse_line(new_commands[i]);
-				if (_strcmp(argv[0], "exit") == 0)
+				argv = parseLine(new_commands[i]);
+				if (customStrcmp(argv[0], "exit") == 0)
 				{
 					if (argv[1] != NULL)
 					{
-						exit_handler(argv);
+						exitHandler(argv);
 					}
 					else
 					{
-						handle_exit(argv);
+						handleExit(argv);
 					}
 				}
-				else if (_strcmp(argv[0], "env") == 0)
+				else if (customStrcmp(argv[0], "env") == 0)
 				{
-					handle_env(argv);
+					handleEnvironment(argv);
 				}
-				else if (_strcmp(argv[0], "cd") == 0)
+				else if (customStrcmp(argv[0], "cd") == 0)
 				{
-					change_directory(argv);
+					changeDirectory(argv);
 				}
 				else
 				{
-					command_path = find_executable(argv);
-					child_process(command_path, argv);
+					command_path = findExecutable(argv);
+					executeChildProcess(command_path, argv);
 				}
 				free(command_path);
 			}
-			free_tokens(new_commands);
+			freeTokens(new_commands);
 		}
 	}
 	free(new_command);

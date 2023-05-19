@@ -15,7 +15,7 @@
 
 typedef struct node 
 {
-	char *dir;
+	char *str;
 	struct node *next;
 }Node;
 
@@ -34,40 +34,41 @@ extern char **environ;
  *its a global variable
  */
 
-void print_prompt(void);
-char *read_line(void);
-char **parse_line(char *new_command);
-char *find_executable(char **tokens);
-int child_process(char *command_path, char **tokens);
-void handle_env(char **tokens);
-void handle_exit(char **tokens);
-void exit_handler(char **arg);
-char *_getenv(char *name);
-Node *path_LL;
-char *handle_seperators(char *new_command);
-int change_directory(char **args);
-ssize_t _getline(char **new_command, size_t *n, FILE *stream);
+void displayPrompt(void);
+char *readLine(void);
+char **parseLine(char *new_command);
+
+char *findExecutable(char **tokens);
+int executeChildProcess(char *command_path, char **tokens);
+void handleEnvironment(char **tokens);
+void handleExit(char **tokens);
+void exitHandler(char **arg);
+char *getEnvironmentVariable(char *name);
+Node *createPathLinkedList;
+
+char **handleSeperators(char *new_command);
+int changeDirectory(char **args);
+ssize_t customGetline(char **new_command, size_t *n, FILE *stream);
 int _setenev(char *name, char *value, int overwrite);
 int _unsetenev(char *name);
-void operand(char *new_command);
-char* _strtok(tokenise *str, char* string, const char* delimiter);
-char *my_strchr(const char *str, int c);
+void applyOperand(char *new_command);
+char* _customStrtok(tokenise *str, char* string, const char* delimiter);
+char *My_customStrchr(const char *str, int c);
 
 
-/* void *_realloc(void *oldPtr, int size) */
-int _strcmp(char *s1, char *s2);
-char *_strchr(char *s, char c);
-char *_strdup(char *str);
-int _atoi(char *str);
-char *_memcpy(char *dest, char *src, size_t size);
+int customStrcmp(char *s1, char *s2);
+char *customStrchr(char *s, char c);
+char *customStrdup(char *str);
+int customAtoi(char *str);
+char *customMemcpy(char *dest, char *src, size_t size);
 
-void *_realloc(void *oldPtr, int oldSize, int size);
-char *_strcpy(char *dest, char *src);
-char *_strcat(char *dest, char *src);
-char *_strncpy(char *dest, char *src, int n);
-int _strlen(char *s);
-void free_tokens(char **tokens);
-int _strncmp(char *s1, char *s2, int n);
+void *customRealloc(void *oldPtr, int oldSize, int size);
+char *customStrcpy(char *dest, char *src);
+char *customStrcat(char *dest, char *src);
+char *customStrncpy(char *dest, char *src, int n);
+int customStrlen(char *s);
+void freeTokens(char **tokens);
+int cusotmStrncmp(char *s1, char *s2, int n);
 
 
 
