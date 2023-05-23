@@ -81,7 +81,7 @@ char *customStrStr(char *stack, char *needle);
 char *customItoa(int n);
 char *custom_getline(void);
 void handle_signal(int sign);
-char **customStrtok(char *buffer, char *p);
+char *customStrtok(char *buffer, char *p);
 int calculate_word(char *buffer);
 int calculate_word2(char buffer);
 void builtinEnv(void);
@@ -101,7 +101,7 @@ void replaceVariables(char *line, int exitStatus, int pid);
 char *customMemset(char *s, char b, unsigned int n);
 void ffree(char *cv);
 void *customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize);
-
+char **my_customStrtok(char *buffer, char *delimiters);
 
 
 

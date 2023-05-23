@@ -31,21 +31,21 @@ void runShell(void)
 	while (1)
 	{
 		displayPrompt();
-	}
-	if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
-	{
-		putchar('\n');
-		break;
-	}
 
-	new_command = customStrtok(buffer, "\t\n");
-	if (new_command != NULL)
-	{
-		if (customStrcmp(new_command, "exit") == 0)
+		if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
 		{
-			return;
+			putchar('\n');
+			break;
 		}
-		executeCommand(new_command);
+		new_command = customStrtok(buffer, "\t\n");
+		if (new_command != NULL)
+		{
+			if (customStrcmp(new_command, "exit") == 0)
+			{
+				return;
+			}
+			executeCommand(new_command);
+		}
 	}
 }
 int main(void)

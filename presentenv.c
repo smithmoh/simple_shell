@@ -23,7 +23,7 @@ void runShell(void)
 	{
 		printf("$ ");
 	}
-	if (customGetline(&buffer, &bufsize, stdin) == -1)
+	if (custom_getline(&buffer, &bufsize, stdin) == -1)
 	{
 		putchar('\n');
 		break;
@@ -50,7 +50,7 @@ void runShell(void)
 		builtinEnv();
 	}
 	else
-		fork(buffer, new_command, argv, countt);
+		fork_fa(buffer, new_command, argv, countt);
 	free(buffer);
 }
 void startShell(void)
