@@ -5,7 +5,7 @@
 *@p: integer
 *Return: always 0
 */
-char **customStrtok(char *buffer, int p)
+char **my_customStrtok(char *buffer, char *delim)
 {
 	char **new_command;
 	size_t v;
@@ -18,17 +18,17 @@ char **customStrtok(char *buffer, int p)
 		free(buffer);
 		return (NULL);
 	}
-	uv = customStrtok(buffer, delim);
+	uv = my_customStrtok(buffer, delim);
 	v = 0;
 
 	while (uv)
 	{
 		new_command[v] = uv;
-		uv = customStrtok(NULL, delim);
+		uv = my_customStrtok(NULL, delim);
 		v++;
 	}
 	new_command[v] = NULL;
-	return (command);
+	return (new_command);
 }
 /**
 *calculate_word - checks buffer
