@@ -9,10 +9,11 @@
 char *customMemset(char *s, char b, unsigned int n)
 {
 	unsigned int v;
+	char *ptr = s;
 
 	for (v = 0; v < n; v++)
 	{
-		s[v] = b;
+		ptr[v] = b;
 	}
 	return (s);
 }
@@ -23,17 +24,11 @@ char *customMemset(char *s, char b, unsigned int n)
 */
 void ffree(char *cv)
 {
-	char **c = cv;
-
 	if (!cv)
 	{
 		return;
 	}
-	while (*cv)
-	{
-		free(*cv++);
-		free(c);
-	}
+	free(cv);
 }
 /**
 *customRealloc - reallocates the memory block
@@ -44,7 +39,7 @@ void ffree(char *cv)
 */
 void customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize)
 {
-	char *h
+	char *h;
 
 	if (!ptr)
 	{
@@ -52,23 +47,23 @@ void customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize)
 	}
 	if (!newSize)
 	{
-		return (free(ptr, NULL));
-
-		if (newSize == oldSize)
-		{
-			return (ptr);
-		}
-		h = malloc(newSize);
-		if (!h)
-		{
-			return (NULL);
-		}
-		oldSize = oldSize < newSize ? oldSize : newSize;
-		while (oldSize--)
-		{
-			h[oldSize] = ((char *)ptr)[oldSize];
-			free(ptr);
-		}
-		return (h);
+		free(ptr);
+		return (NULL);
 	}
+	if (newSize == oldSize)
+	{
+		return (ptr);
+	}
+	h = malloc(newSize);
+	if (!h)
+	{
+		return (NULL);
+	}
+	oldSize = oldSize < newSize ? oldSize : newSize;
+	while (oldSize--)
+	{
+		h[oldSize] = ((char *)ptr)[oldSize];
+		free(ptr);
+	}
+	return (h);
 }

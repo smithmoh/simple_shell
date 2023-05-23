@@ -11,7 +11,7 @@
 */
 void replaceVariables(char *line, int exitStatus, int pid)
 {
-	char buffer[MAX_BUFFER_SIZE];
+	char buffer[MAX_BUFFSIZE_SIZE];
 	char *variable = NULL;
 	char *replacement = NULL;
 	char *pos = NULL;
@@ -29,7 +29,7 @@ void replaceVariables(char *line, int exitStatus, int pid)
 		memcpy(pos, replacement, repLen);
 	}
 	variable = "$$";
-	sprintf(buffer, sizeof(buffer), "%d", pid);
+	sprintf(buffer, "%d", pid);
 	customStrcpy(replacement, buffer);
 	while ((pos = customStrStr(line, variable)) != NULL)
 	{
