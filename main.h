@@ -13,62 +13,95 @@
 #include <fcntl.h>
 #include <stdbool.h>
 
-typedef struct node 
-{
-	char *str;
-	struct node *next;
-}Node;
 
-typedef struct 
-{
-	char *last_token;
-}tokenise;
+#define READ_BUF_SIZE 1024
+#define WRITE_BUF_SIZE 1024
+#define BUF_FLUSH -1
 
 
-#define TOKEN_BUFSIZE 1024
-#define BUF_SIZE 1024
-#define TOKEN_SEPERATOR "\t\r\n\a,;:"
+#define CMD_OR    0
+#define CMD_NORM  1
+#define CMD_AND   2
+#define CMD_CHAIN 3
+
+#define CONVERT_UNSIGNED 
+#define CONVERT_LOWERCASE 
+
+
+#define USE_GETLINE 
+#define USE_STRTOK
+
+#define HIST_FILE  ".simple_shell_history"
+#define HIST_MAX   4096
+
 
 extern char **environ;
-/**
- *its a global variable
- */
 
-void displayPrompt(void);
-char *readLine(void);
-char **parseLine(char *new_command);
-
-char *findExecutable(char **tokens);
-int executeChildProcess(char *command_path, char **tokens);
-void handleEnvironment(char **tokens);
-void handleExit(char **tokens);
-void exitHandler(char **arg);
-char *getEnvironmentVariable(char *name);
-Node *createPathLinkedList;
-
-char **handleSeperators(char *new_command);
-int changeDirectory(char **args);
-ssize_t customGetline(char **new_command, size_t *n, FILE *stream);
-int _setenev(char *name, char *value, int overwrite);
-int _unsetenev(char *name);
-void applyOperand(char *new_command);
-char* _customStrtok(tokenise *str, char* string, const char* delimiter);
-char *My_customStrchr(const char *str, int c);
+typedef struct liststr
+{
+	int num;
+	char *str;
+	struct liststr *next;
+}list_t;
 
 
-int customStrcmp(char *s1, char *s2);
-char *customStrchr(char *s, char c);
+
+
+typedef struct passinfo 
+{
+	char *arg;
+	char **argv;
+	char *path;
+	int argc;
+	unsigned int line_count;
+	int err_num;
+	int linecount_flag;
+	char *fname;
+	list_t *env;
+	list_t *history;
+	list_t *alias;
+	char **environ;
+	int env_changed;
+	int status;
+
+
+	char **cmd_buf;
+	int cmd_buf_type;
+	int readfd;
+	int histcountt;
+}info_t;
+
+
 char *customStrdup(char *str);
-int customAtoi(char *str);
-char *customMemcpy(char *dest, char *src, size_t size);
-
-void *customRealloc(void *oldPtr, int oldSize, int size);
-char *customStrcpy(char *dest, char *src);
-char *customStrcat(char *dest, char *src);
-char *customStrncpy(char *dest, char *src, int n);
 int customStrlen(char *s);
-void freeTokens(char **tokens);
-int cusotmStrncmp(char *s1, char *s2, int n);
+char *customStrcpy(char *dest, char *src);
+int customStrcmp(char *s1, char *s2);
+char *customStrcat(char *dest, char *src);
+char *StrStr(char *stack, char *needle);
+char *customItoa(int n);
+char *custom_getline(void);
+void handle_signal(int sign);
+char **customStrtok(char *buffer, int p);
+int calculate_word(char *buffer);
+int calculate_word2(char buffer);
+void builtinEnv(void);
+void runShell();
+void startShell();
+char *getPath(char *new_command);
+char *getDir(char **folder, char *new_command);
+void executeCommand(char *new_command);
+void displayPrompt(void);
+char *getEnvironmentVariable(char *s);
+int checkVir(char *buffer, char **new_command);
+void fork_fa(char *buffer, char **new_command, char **argv, int countt);
+int *_perror(char *argv, char *str, char *new_command);
+int exitHandler(char *buffer, char **new_command);
+int free_p(void **ptr);
+void replaceVariables(char *line, int exitStatus, int pid);
+char *customMemset(char *s, char b, unsigned int n);
+void ffree(char *cv);
+void customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize);
+
 
 
 
