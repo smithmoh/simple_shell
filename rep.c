@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 #define MAX_BUFFSIZE_SIZE 1024
 
@@ -10,13 +11,13 @@
 */
 void replaceVariables(char *line, int exitStatus, int pid)
 {
-	char buffer(MAX_BUFFER_SIZE);
+	char buffer[MAX_BUFFER_SIZE];
 	char *variable = NULL;
 	char *replacement = NULL;
 	char *pos = NULL;
 
 	variable = "$?";
-	sprintf(buffer, sizeof(buffer), "%d", exit_status);
+	sprintf(buffer, "%d", exitStatus);
 	replacement = buffer;
 	while ((pos = customStrStr(line, variable)) != NULL)
 	{
@@ -28,8 +29,8 @@ void replaceVariables(char *line, int exitStatus, int pid)
 		memcpy(pos, replacement, repLen);
 	}
 	variable = "$$";
-	snprintf(buffer, sizeof(buffer), "%d", pid);
-	replacement = buffer;
+	sprintf(buffer, sizeof(buffer), "%d", pid);
+	customStrcpy(replacement, buffer);
 	while ((pos = customStrStr(line, variable)) != NULL)
 	{
 		size_t varLen = customStrlen(variable);

@@ -12,7 +12,7 @@ void fork_fa(char *buffer, char **new_command, char **argv, int countt)
 	int c;
 	int status;
 	pid_t pid;
-	struct start sv;
+struct stat st;
 	char str[10];
 
 	sprintf(str, "%d", countt);
@@ -28,7 +28,7 @@ void fork_fa(char *buffer, char **new_command, char **argv, int countt)
 		}
 		if (pid == 0)
 		{
-			c = start(new_command[0], &sv);
+			c = strcat(new_command[0], &st);
 			if (c != 0)
 			{
 				new_command[0] = getPath(new_command[0]);

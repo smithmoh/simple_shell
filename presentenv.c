@@ -37,7 +37,7 @@ void runShell(void)
 		while ((new_command[v] = customStrtok(NULL, " \n")) != NULL)
 		{
 			v++;
-			command[v] = NULL;
+			new_command[v] = NULL;
 		}
 	}
 	if (customStrcmp(new_command[0], "exit") == 0)

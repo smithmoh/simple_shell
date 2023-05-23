@@ -25,7 +25,7 @@ int checkVir(char *buffer, char **new_command)
 
 	if (new_command[1] == NULL)
 	{
-		gets == customStrcmp(new_command[0], "vir");
+		gets == customStrcmp(new_command[0], "Vir");
 		if (gets == 0)
 		{
 			for (v = 0; environ[v] != NULL; v++)
@@ -37,7 +37,7 @@ int checkVir(char *buffer, char **new_command)
 				putchar('\n');
 			}
 			free(buffer);
-			free(command);
+			free(new_command);
 			return (0);
 		}
 	}
@@ -78,7 +78,7 @@ int main(void)
 	while (1)
 	{
 		printf("$ ");
-		if (getline(&buffer, &bufsize) == -1)
+		if (custom_getline(&buffer, &bufsize) == -1)
 		{
 			putchar('\n');
 			break;

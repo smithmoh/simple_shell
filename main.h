@@ -77,7 +77,7 @@ int customStrlen(char *s);
 char *customStrcpy(char *dest, char *src);
 int customStrcmp(char *s1, char *s2);
 char *customStrcat(char *dest, char *src);
-char *StrStr(char *stack, char *needle);
+char *customStrStr(char *stack, char *needle);
 char *customItoa(int n);
 char *custom_getline(void);
 void handle_signal(int sign);
