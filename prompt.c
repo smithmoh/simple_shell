@@ -11,40 +11,41 @@ void executeCommand(char *new_command)
 {
 	int status;
 
-	status = system(new_command);
-
 	if (new_command == NULL)
 	{
 		return;
 	}
+
+	status = system(new_command);
+
 	if (status == -1)
 	{
 		fprintf(stderr, "Error Implementing Command: %s\n", new_command);
 	}
-	void runShell(void)
+}
+void runShell(void)
+{
+	char buffer[BUFFER_SIZE];
+	char *new_command;
+
+	while (1)
 	{
-		char buffer[BUFFER_SIZE];
-		char *new_command;
+		displayPrompt();
+	}
+	if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
+	{
+		putchar('\n');
+		break;
+	}
 
-		while (1)
+	new_command = customStrtok(buffer, "\t\n");
+	if (new_command != NULL)
+	{
+		if (customStrcmp(new_command, "exit") == 0)
 		{
-			displayPrompt();
-
-			if (fgets(buffer, BUFFER_SIZE, stdin) == NULL)
-			{
-				putchar('\n');
-				break;
-			}
-			new_command = customStrtok(buffer, "\t\n");
-			if (new_command != NULL)
-			{
-				if (customStrcmp(new_command "exit") == 0)
-				{
-					return;
-				}
-				executeCommand(new_command);
-			}
+			return;
 		}
+		executeCommand(new_command);
 	}
 }
 int main(void)

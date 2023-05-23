@@ -37,13 +37,13 @@ void ffree(char *cv)
 *@newSize: size of new block
 *Return: pointer
 */
-void customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize)
+void *customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize)
 {
 	char *h;
 
 	if (!ptr)
 	{
-		return (malloc(newSize));
+		return malloc(newSize);
 	}
 	if (!newSize)
 	{
@@ -63,7 +63,7 @@ void customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize)
 	while (oldSize--)
 	{
 		h[oldSize] = ((char *)ptr)[oldSize];
-		free(ptr);
 	}
+	free(ptr);
 	return (h);
 }
