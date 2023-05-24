@@ -1,12 +1,19 @@
 #include "main.h"
 
 #define BUFFER_SIZE 1024
-
+/**
+*displayPrompt - displays the prompt
+*Return: void
+*/
 void displayPrompt(void)
 {
 	printf("cisgood$ ");
 }
-
+/**
+*executeCommand - executes the commands
+*@new_command: pointer
+*Return: command
+*/
 void executeCommand(char *new_command)
 {
 	int status;
@@ -23,6 +30,10 @@ void executeCommand(char *new_command)
 		fprintf(stderr, "Error Implementing Command: %s\n", new_command);
 	}
 }
+/**
+*runShell - runs the shell
+*Return: void
+*/
 void runShell(void)
 {
 	char buffer[BUFFER_SIZE];

@@ -1,6 +1,6 @@
 #include "main.h"
 /**
-*custom_getline - validates the input
+*my_custom_getline - validates the input
 *void: input parameter
 *Return: the buffer
 */

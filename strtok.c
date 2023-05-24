@@ -7,7 +7,7 @@
 */
 char *customStrtok(char *buffer, char *p)
 {
-	static char *nextToken = NULL;
+	statics char *nextToken = NULL;
 	char *token = NULL;
 
 	if (buffer != NULL)

@@ -25,30 +25,28 @@
 #define CMD_AND   2
 #define CMD_CHAIN 3
 
-#define CONVERT_UNSIGNED 
-#define CONVERT_LOWERCASE 
-
-
-#define USE_GETLINE 
+#define CONVERT_UNSIGNED
+#define CONVERT_LOWERCASE
+#define USE_GETLINE
 #define USE_STRTOK
-
 #define HIST_FILE  ".simple_shell_history"
 #define HIST_MAX   4096
 
 
 extern char **environ;
-
+/**
+*struct liststr - 
 typedef struct liststr
 {
 	int num;
 	char *str;
 	struct liststr *next;
-}list_t;
+} list_t;
 
 
 
 
-typedef struct passinfo 
+typedef struct passinfo
 {
 	char *arg;
 	char **argv;
@@ -70,7 +68,7 @@ typedef struct passinfo
 	int cmd_buf_type;
 	int readfd;
 	int histcountt;
-}info_t;
+} info_t;
 
 
 char *customStrdup(char *str);

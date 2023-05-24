@@ -34,7 +34,6 @@ int custom_getline(char **lineptr, size_t *n, FILE *stream)
 		{
 			capacity *= 2;
 			temp = (char *)realloc(*lineptr, capacity * sizeof(char));
-			
 			if (temp == NULL)
 			{
 				return (-1);
@@ -44,7 +43,7 @@ int custom_getline(char **lineptr, size_t *n, FILE *stream)
 		}
 		(*lineptr)[length] = '\0';
 	}
-	return length > 0 ? (int)length : -1;
+	return (length > 0 ? (int)length : -1);
 }
 /**
 *main1 - entry point
