@@ -1,7 +1,7 @@
 #include "main.h"
 /**
-*main - entry point of the program
-*Return: always 0
+* main - entry point of the program
+* Return: Always 0
 */
 int main(void)
 {
@@ -17,7 +17,7 @@ int main(void)
 	if (custom_getline(&buffer, &bufsize, stdin) == -1)
 	{
 		putchar('\n');
-		break;
+	        break;
 	}
 	new_command[0] = customStrtok(buffer, "\n");
 	countt++;
@@ -28,7 +28,7 @@ int main(void)
 
 		while ((new_command[v] = customStrtok(NULL, "\n")) != NULL)
 		{
-			i++;
+			v++;
 		}
 		new_command[v] = NULL;
 	}

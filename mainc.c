@@ -1,15 +1,15 @@
 #include "main.h"
 /**
-*main - entry point for the shell
-*@argc: argument count
-*@argv: argument vector
-*Return: always 0
-*/
+ *main - entry point for the shell
+ *@argc: argument count
+ *@argv: argument vector
+ *Return: Always 0
+ */
 int main(__attribute__((unused)) int argc, char *argv[])
 {
 	char *buffer = NULL;
 	char **new_command;
-	int p, v, countt = 0;
+	int p, v, count = 0;
 
 	signal(SIGINT, handle_signal);
 	while (1)
@@ -17,7 +17,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, ":) ", 3);
-			buffer = custom_getline();
+			buffer = custom_getline(char **lineptr, size_t *n, FILE *stream);
 			count++;
 
 			if (!buffer)
@@ -29,7 +29,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 
 				if (v == 0 || new_command == 0)
 					continue;
-				fork_fa(buffer, new_command, argv, countt);
+				fork_fa(buffer, new_command, argv, count);
 			}
 		}
 	}

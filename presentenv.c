@@ -16,8 +16,7 @@ void runShell(void)
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	char *new_command[64];
-	int countt = 0;
-	char **argv = NULL;
+	int **argv = NULL;
 
 	while (1)
 	{
@@ -53,8 +52,9 @@ void runShell(void)
 			fork_fa(buffer, new_command, argv, countt);
 		free(buffer);
 	}
-}
+
 void startShell(void)
 {
 	runShell();
+}
 }

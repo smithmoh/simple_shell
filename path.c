@@ -1,9 +1,9 @@
 #include "main.h"
 /**
-*customStrtok - splits string to small tokens
-*@buffer: pointer to a char
-*@p: integer
-*Return: always 0
+* customStrtok - splits string to small tokens
+* @buffer: pointer to a char
+* @p: integer
+* Return: Always 0
 */
 char **my_customStrtok(char *buffer, char *delim)
 {
@@ -23,7 +23,7 @@ char **my_customStrtok(char *buffer, char *delim)
 
 	while (uv)
 	{
-		new_command[v] = uv;
+		new_command[v];
 		uv = my_customStrtok(NULL, delim);
 		v++;
 	}
@@ -31,9 +31,9 @@ char **my_customStrtok(char *buffer, char *delim)
 	return (new_command);
 }
 /**
-*calculate_word - checks buffer
-*@buffer: the buffer
-*Return: the total count
+* calculate_word - checks buffer
+* @buffer: the buffer
+* Return: the total count
 */
 int calculate_word(char *buffer)
 {
@@ -50,9 +50,9 @@ int calculate_word(char *buffer)
 	return (countt);
 }
 /**
-*calculate_word2 - checks buffer
-*@buffer: the buffer
-*Return: number
+* calculate_word2 - checks buffer
+* @buffer: the buffer
+* Return: number
 */
 int calculate_word2(char *buffer)
 {

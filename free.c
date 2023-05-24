@@ -1,8 +1,8 @@
 #include "main.h"
 /**
-*free_p - frees a pointer
-*@ptr: pointer
-*Return: 1 if successful 0 if otherwise
+* free_p - frees a pointer
+* @ptr: pointer
+* Return: 1 if successful 0 if otherwise
 */
 int free_p(void **ptr)
 {
