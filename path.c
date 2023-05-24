@@ -9,22 +9,22 @@ char **my_customStrtok(char *buffer, char *delim)
 {
 	char **new_command;
 	size_t v;
-	char *uv;
+	char *token;
 
-	new_command = malloc(sizeof(char *) * p);
+	new_command = malloc(sizeof(char *) * calculate_word(buffer));
 	if (new_command == NULL)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	uv = my_customStrtok(buffer, delim);
+	
+	token = customStrtok(buffer, delim);
 	v = 0;
-
-	while (uv)
+	while (token != NULL)
 	{
-		new_command[v];
-		uv = my_customStrtok(NULL, delim);
+		new_command[v] = token;
 		v++;
+		token = customStrtok(NULL, delim);
 	}
 	new_command[v] = NULL;
 	return (new_command);
