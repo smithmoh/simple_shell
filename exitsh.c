@@ -25,7 +25,7 @@ int checkVir(char *buffer, char **new_command)
 
 	if (new_command[1] == NULL)
 	{
-		gets == customStrcmp(new_command[0], "Vir");
+		gets = customStrcmp(new_command[0], "Vir");
 		if (gets == 0)
 		{
 			for (v = 0; environ[v] != NULL; v++)
@@ -49,7 +49,7 @@ int checkVir(char *buffer, char **new_command)
 *@new_command: double pointer
 *Return: always 0
 */
-void exitHandler(char *buffer, char **new_command)
+int exitHandler(char *buffer, char **new_command)
 {
 	int gets;
 

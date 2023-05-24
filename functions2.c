@@ -59,7 +59,7 @@ char *customItoa(int n)
 		while (div != 0)
 		{
 			str[v] = (uvp / div) + '0';
-			tmp %= div;
+			uvp %= div;
 			div /= 10;
 			v++;
 		}

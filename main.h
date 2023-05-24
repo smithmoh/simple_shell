@@ -5,6 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <dirent.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
@@ -12,7 +13,7 @@
 #include <stddef.h>
 #include <fcntl.h>
 #include <stdbool.h>
-
+#include <sys/stat.h>
 
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
@@ -82,7 +83,7 @@ char *customItoa(int n);
 void handle_signal(int sign);
 char *customStrtok(char *buffer, char *p);
 int calculate_word(char *buffer);
-int calculate_word2(char buffer);
+int calculate_word2(char *buffer);
 void builtinEnv(void);
 void runShell();
 void startShell();
@@ -102,7 +103,7 @@ void ffree(char *cv);
 void *customRealloc(void *ptr, unsigned int oldSize, unsigned int newSize);
 char **my_customStrtok(char *buffer, char *delim);
 int custom_getline(char **lineptr, size_t *n, FILE *stream);
-
+char *my_custom_getline(void);
 
 
 
