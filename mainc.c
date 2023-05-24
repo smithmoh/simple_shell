@@ -19,7 +19,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		if (isatty(STDIN_FILENO))
 		{
 			write(STDOUT_FILENO, ":) ", 3);
-			buffer = my_custom_getline(&lineptr, &n, stdin);
+			custom_getline(&lineptr, &n, stdin);
 			countt++;
 
 			if (!buffer)

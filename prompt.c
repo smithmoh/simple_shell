@@ -34,7 +34,7 @@ void executeCommand(char *new_command)
 *runShell - runs the shell
 *Return: void
 */
-void runShell(void)
+void runShell1(void)
 {
 	char buffer[BUFFER_SIZE];
 	char *new_command;
