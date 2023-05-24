@@ -55,23 +55,23 @@ char *getDir(char **folder, char *new_command)
 	while (folder[v])
 	{
 		DIR *f;
-		struct direct fiy;
+		struct dirent *fiy;
 
-		f = open_dir(folder[v]);
+		f = opendir(folder[v]);
 		if (f)
 		{
-			while ((fiy = read_dir(f) != NULL))
+			while ((fiy = readdir(f)) != NULL)
 			{
-				if (customStrcmp(fiy->f_name, new_command))
+				if (customStrcmp(fiy->d_name, new_command))
 				{
 					customStrcpy(aws, folder[v]);
 					customStrcat(aws, "/");
-					customStrcat(aws, fiy->f_name);
-					close_fiy(f);
+					customStrcat(aws, fiy->d_name);
+					closedir(f);
 					return (aws);
 				}
 			}
-			close_fiy(f);
+			closedir(f);
 			v++;
 		}
 	}

@@ -24,9 +24,9 @@ char *customStrdup(char *str)
 	{
 		return (0);
 	}
-	for (v = ; v < u v++)
+	for (v = 0; v < u; v++)
 	{
-		*(ano_new + u) = *(str + u);
+		*(ano_new + v) = *(str + v);
 	}
 	return (ano_new);
 }
@@ -56,7 +56,7 @@ char *customStrcpy(char *dest, char *src)
 {
 	char *pov = dest;
 
-	while (src != 0)
+	while (*src != '\0')
 	{
 		*dest = *src;
 		src++;
@@ -96,9 +96,11 @@ char *customStrcat(char *dest, char *src)
 	{
 		uav++;
 	}
-	while (*src != 0)
+	while (*src != '\0')
 	{
-		uav++ = src++;
+		*uav = *src;
+		uav++;
+		src++;
 	}
 	*uav = '\0';
 

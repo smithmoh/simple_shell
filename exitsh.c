@@ -1,19 +1,5 @@
 #include "main.h"
 /**
-*customStrcmp - compares two strings
-*@s1: 1st string
-*@s2: 2nd string
-*Return: always 0
-*/
-int customStrcmp(char *s1, char *s2)
-{
-	int v;
-
-	for (v = 0; s1[v] && s2[v] && s1[v] == s2[v]; v++)
-		;
-	return (s1[v] - s2[v]);
-}
-/**
 *checkVir - checks if the command is vir
 *@buffer: pointer
 *@new_command: double pointer
@@ -25,7 +11,7 @@ int checkVir(char *buffer, char **new_command)
 
 	if (new_command[1] == NULL)
 	{
-		gets == customStrcmp(new_command[0], "Vir");
+		gets = customStrcmp(new_command[0], "Vir");
 		if (gets == 0)
 		{
 			for (v = 0; environ[v] != NULL; v++)
@@ -49,7 +35,7 @@ int checkVir(char *buffer, char **new_command)
 *@new_command: double pointer
 *Return: always 0
 */
-void exitHandler(char *buffer, char **new_command)
+int exitHandler(char *buffer, char **new_command)
 {
 	int gets;
 
@@ -64,12 +50,13 @@ void exitHandler(char *buffer, char **new_command)
 		else
 			exit(0);
 	}
+	return (0);
 }
 /**
-*main - entry point
+*main2 - entry point
 *Return: always 0
 */
-int main(void)
+int main2(void)
 {
 	char *buffer = NULL;
 	size_t bufsize = 0;
@@ -78,7 +65,7 @@ int main(void)
 	while (1)
 	{
 		printf("$ ");
-		if (custom_getline(&buffer, &bufsize) == -1)
+		if (custom_getline(&buffer, &bufsize, stdin) == -1)
 		{
 			putchar('\n');
 			break;
@@ -98,6 +85,6 @@ int main(void)
 				exitHandler(buffer, new_command);
 		}
 		free(buffer);
-		return (0);
 	}
+	return (0);
 }

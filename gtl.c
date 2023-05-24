@@ -4,14 +4,14 @@
 *void: input parameter
 *Return: the buffer
 */
-char *custom_getline(void)
+char *my_custom_getline(void)
 {
 	char *buffer = NULL;
 	size_t size;
 	ssize_t vice;
 	int v = 0;
 
-	vice = getline(&buffer, &size, stdin);
+	vice = custom_getline(&buffer, &size, stdin);
 	if (!buffer)
 	{
 		perror("Error in Memory Buffer");
@@ -35,7 +35,7 @@ char *custom_getline(void)
 	{
 		while (buffer[v] == ' ' && buffer[v + 1] == ' ')
 		{
-			i++;
+			v++;
 		}
 		if (buffer[v + 1] == '\n')
 		{
