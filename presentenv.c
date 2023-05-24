@@ -1,5 +1,8 @@
 #include "main.h"
-
+/**
+*builtinEnv - builds the env
+*Return: void
+*/
 void builtinEnv(void)
 {
 	char **env = environ;
@@ -10,13 +13,17 @@ void builtinEnv(void)
 		env++;
 	}
 }
-
+/**
+*runShell - runs the shell
+*Return: void
+*/
 void runShell(void)
 {
 	char *buffer = NULL;
 	size_t bufsize = 0;
 	char *new_command[64];
-	int **argv = NULL;
+	int countt = 0;
+	char *argv[64];
 
 	while (1)
 	{
@@ -52,9 +59,4 @@ void runShell(void)
 			fork_fa(buffer, new_command, argv, countt);
 		free(buffer);
 	}
-
-void startShell(void)
-{
-	runShell();
-}
 }
