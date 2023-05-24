@@ -48,8 +48,3 @@ void runShell(void)
 		}
 	}
 }
-int main(void)
-{
-	runShell();
-	return (0);
-}

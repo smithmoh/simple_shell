@@ -5,7 +5,7 @@
 *@p: integer
 *Return: always 0
 */
-char **my_customStrtok(char *buffer, char *delim)
+char **my_customStrtok(char *buffer,  char *delim)
 {
 	char **new_command;
 	size_t v;

@@ -20,7 +20,7 @@ int main(__attribute__((unused)) int argc, char *argv[])
 		{
 			write(STDOUT_FILENO, ":) ", 3);
 		}
-		buffer = custom_getline(&buffer, &n, stdin);
+		custom_getline(&buffer, &n, stdin);
 		countt++;
 
 		if (!buffer)

@@ -3,7 +3,7 @@
 *main - entry point of the program
 *Return: always 0
 */
-int main(void)
+int main3(void)
 {
 	char *buffer = NULL;
 	size_t bufsize = 0;

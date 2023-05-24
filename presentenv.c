@@ -11,7 +11,7 @@ void builtinEnv(void)
 	}
 }
 
-void runShell(void)
+void runShell1(void)
 {
 	char *buffer = NULL;
 	size_t bufsize = 0;
@@ -53,8 +53,4 @@ void runShell(void)
 			fork_fa(buffer, new_command, argv, countt);
 		free(buffer);
 	}
-}
-void startShell(void)
-{
-	runShell();
 }
