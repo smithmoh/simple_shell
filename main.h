@@ -35,7 +35,11 @@
 
 extern char **environ;
 /**
-*struct liststr - 
+*struct liststr - list
+*@next: next node
+*@str: string
+*@num: integer
+*/
 typedef struct liststr
 {
 	int num;

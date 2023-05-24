@@ -10,7 +10,6 @@ char **my_customStrtok(char *buffer, char *delim)
 	char **new_command;
 	size_t v;
 	char *uv;
-	char *delim = " \n\t";
 
 	new_command = malloc(sizeof(char *) * p);
 	if (new_command == NULL)
@@ -37,7 +36,7 @@ char **my_customStrtok(char *buffer, char *delim)
 */
 int calculate_word(char *buffer)
 {
-	int v, countt = 2;
+	int v, countt = 1;
 	char *delim = " ";
 
 	for (v = 0; buffer[v] != '\0'; v++)
@@ -56,7 +55,7 @@ int calculate_word(char *buffer)
 */
 int calculate_word2(char *buffer)
 {
-	int v, countt = 2;
+	int v, countt = 1;
 	char *delim = ":";
 
 	for (v = 0; buffer[v] != '\0'; v++)
